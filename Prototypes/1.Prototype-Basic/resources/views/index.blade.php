@@ -19,7 +19,7 @@
             <td>{{$value->Date_heure_de_livraison}}</td>
             <td>{{$value->Date_heure_de_récupération}}</td>
             <td>
-                <a href="edit">edit</a>
+                <a href="{{route('brief.edit',$value->id)}}">edit</a>
                 <a href="delete">delete</a>
             </td>
         </tr>

@@ -11,7 +11,7 @@ class BriefController extends Controller
     public function index()
     {
         $brief = Brief::all();
-        return view('index',['brief' => $brief]);
+        return view('index',compact('brief'));
     }
 
 
@@ -23,35 +23,39 @@ class BriefController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
-        // $brief = Brief::create( [
-        //       'Nom_du_brief'= $request->
-        //       'Date_heure_de_livraison'
-        //       'Date_heure_de_récupération'
-        // ]);
+
+        $brief = Brief::create([
+          'Nom_du_brief' => $request->nom,
+          'Date_heure_de_livraison' => $request->livraison,
+          'Date_heure_de_récupération'=> $request->recuperation,
+        ]);
+        $brief-> save();
+        return redirect('brief');
     }
 
 
     public function show($id)
     {
-        //
+
     }
 
     public function edit($id)
     {
-        //
+        $brief = brief::where('id',$id)
+        ->get();
+        return view('edit',compact('brief'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $brief = Brief::find($id)
+            ->update([
+            'Nom_du_brief' => $request->nom,
+            'Date_heure_de_livraison' => $request->livraison,
+            'Date_heure_de_récupération'=> $request->recuperation,
+          ]);
+          return redirect('brief/'.$id.'/edit');
     }
 
 
