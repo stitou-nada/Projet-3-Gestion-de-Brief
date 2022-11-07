@@ -11,13 +11,13 @@ class BriefController extends Controller
     public function index()
     {
         $brief = Brief::all();
-        return view('index',compact('brief'));
+        return view('brief.index',compact('brief'));
     }
 
 
     public function create()
     {
-        return view('create');
+        return view('biref.create');
     }
 
 
@@ -43,7 +43,7 @@ class BriefController extends Controller
     {
         $brief = brief::where('id',$id)
         ->get();
-        return view('edit',compact('brief'));
+        return view('brief.edit',compact('brief'));
     }
 
 

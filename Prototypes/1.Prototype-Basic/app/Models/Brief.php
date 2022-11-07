@@ -14,7 +14,5 @@ class Brief extends Model
         "Date_heure_de_livraison",
         "Date_heure_de_récupération",
     ];
-     public function OneToManyTaches(){
-            return $this->hasMany(tache::class);
-     }
+     
 }

@@ -3,83 +3,66 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brief;
+use App\Models\tache;
 use Illuminate\Http\Request;
 
 class TacheController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        
+        $tache = tache::all();
+        return view('tache.index',compact('tache'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
-        //
+        return view('tache.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        tache::create([
+            "Nom_de_la_tache"=> $request->nom,
+            "Debut_de_la_tache"=> $request->debut_tache,
+            "Fin_de_la_tache"=> $request->fin_tache,
+        ])->save();
+        
+        return redirect('tache');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
-        //
-    }
+        $tache = tache::where('id',$id)
+        ->get();
+        return view('tache.edit',compact('tache'));    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
-        //
+        tache::find($id)
+        ->update([
+            "Nom_de_la_tache"=> $request->nom,
+            "Debut_de_la_tache"=> $request->debut_tache,
+            "Fin_de_la_tache"=> $request->fin_tache,
+        ]);
+        return redirect('tache/'.$id.'/edit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+        tache::find($id)
+        ->delete();
+        return redirect('tache');
     }
 }

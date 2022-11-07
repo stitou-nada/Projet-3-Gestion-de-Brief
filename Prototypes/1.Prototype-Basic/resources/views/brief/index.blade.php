@@ -29,7 +29,7 @@
                 @csrf
                 <button>delete</button>
             </form>
-        </td>
+           </td>
         </tr>
         @endforeach
     </tbody>

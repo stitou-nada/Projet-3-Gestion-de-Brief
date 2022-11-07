@@ -10,27 +10,5 @@
     <button type="submit">Ajouter</button>
 </form>
 @endforeach
-<table>
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Nom de tache</th>
-            <th>Debut de la tache</th>
-            <th>Fin de la tache</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            {{-- <td>{{}}</td>
-            <td>{{}}</td>
-            <td>{{}}</td>
-            <td>{{}}</td>
-            <td>
-                <a href="">Edit</a>
-                <a href="">Delete</a>
-            </td> --}}
-        </tr>
-    </tbody>
-</table>
+
 <a href="{{route('brief.index')}}">retourn</a>
