@@ -33,3 +33,4 @@
         </tr>
     </tbody>
 </table>
+<a href="{{route('brief.index')}}">retourn</a>

@@ -19,9 +19,17 @@
             <td>{{$value->Date_heure_de_livraison}}</td>
             <td>{{$value->Date_heure_de_récupération}}</td>
             <td>
-                <a href="{{route('brief.edit',$value->id)}}">edit</a>
-                <a href="delete">delete</a>
+            <form action="{{route('brief.edit',$value->id)}}">
+                <button>edit</button>
+            </form>
             </td>
+            <td>
+            <form action="{{route('brief.destroy',$value->id)}}" method="POST">
+                @method("DELETE")
+                @csrf
+                <button>delete</button>
+            </form>
+        </td>
         </tr>
         @endforeach
     </tbody>

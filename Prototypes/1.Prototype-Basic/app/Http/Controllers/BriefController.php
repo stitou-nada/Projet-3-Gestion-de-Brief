@@ -49,7 +49,7 @@ class BriefController extends Controller
 
     public function update(Request $request, $id)
     {
-        $brief = Brief::find($id)
+        Brief::find($id)
             ->update([
             'Nom_du_brief' => $request->nom,
             'Date_heure_de_livraison' => $request->livraison,
@@ -61,6 +61,8 @@ class BriefController extends Controller
 
     public function destroy($id)
     {
-        //
+        Brief::find($id)
+        ->delete();
+        return redirect('brief');
     }
 }
