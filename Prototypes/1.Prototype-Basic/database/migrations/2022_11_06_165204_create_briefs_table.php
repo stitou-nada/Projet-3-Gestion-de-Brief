@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('briefs', function (Blueprint $table) {
             $table->id();
             $table->string("Nom_du_brief")->nullable();
-            $table->string("Date_heure_de_livraison")->default('null'); 
-            $table->string("Date_heure_de_récupération")->default('null');
+            $table->timestamp("Date_heure_de_livraison")->nullable();
+            $table->timestamp("Date_heure_de_récupération")->nullable();
         });
     }
 

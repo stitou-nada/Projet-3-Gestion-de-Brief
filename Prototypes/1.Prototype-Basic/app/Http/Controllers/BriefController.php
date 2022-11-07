@@ -7,31 +7,31 @@ use Illuminate\Http\Request;
 
 class BriefController extends Controller
 {
-   
+
     public function index()
     {
         $brief = Brief::all();
-        return view('index',compact('brief'));
+        return view('index',['brief' => $brief]);
     }
 
-  
+
     public function create()
     {
         return view('create');
     }
 
-   
+
     public function store(Request $request)
     {
-        dd($request);
-        $brief = Brief::create( [
-              'Nom_du_brief'= $request->
-              'Date_heure_de_livraison'
-              'Date_heure_de_récupération'
-        ]);
+        // dd($request);
+        // $brief = Brief::create( [
+        //       'Nom_du_brief'= $request->
+        //       'Date_heure_de_livraison'
+        //       'Date_heure_de_récupération'
+        // ]);
     }
 
-   
+
     public function show($id)
     {
         //
@@ -54,7 +54,7 @@ class BriefController extends Controller
         //
     }
 
-    
+
     public function destroy($id)
     {
         //

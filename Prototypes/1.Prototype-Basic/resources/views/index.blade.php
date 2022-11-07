@@ -11,8 +11,8 @@
     </thead>
     <tbody>
         @foreach ($brief as $value)
-            
-      
+
+
         <tr>
             <td>{{$value->id}}</td>
             <td>{{$value->Nom_du_brief}}</td>
