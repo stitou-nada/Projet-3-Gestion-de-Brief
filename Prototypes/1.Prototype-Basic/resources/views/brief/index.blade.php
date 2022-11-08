@@ -25,7 +25,8 @@
         <td>{{$value->Date_heure_de_récupération}}</td>
         <td>
             <form action="{{route('brief.edit',$value->id)}}">
-                <button type="submit" class="btn btn-success">Edit</button>
+                <button type="submit" class="btn btn-warning">Edit</button>
+
             </form>
             </td>
             <td>

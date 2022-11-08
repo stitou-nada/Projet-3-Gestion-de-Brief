@@ -15,13 +15,13 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-warning">Editer</button>
   </form>
 
 
 <form action="{{route('tache.create')}}" method="get" >
 
-<button type="submit">Ajouter tache</button>
+<button type="submit" class="btn btn-primary">Ajouter tache</button>
 <input type="hidden" value="{{$brief->id}}" name="brief_id">
 </form>
 
