@@ -1,3 +1,4 @@
+@include('layouts.head')
 
 
 <form  action="{{route('brief.update',$brief->id)}}" method="POST" >
@@ -7,7 +8,7 @@
     Date/heure de livraison : <input type="datetime-local" value="{{$brief->Date_heure_de_livraison}}" name="livraison">
     Date/heure de récupération : <input type="datetime-local"  value="{{$brief->Date_heure_de_récupération}}" name="recuperation">
     <button type="submit">Ajouter</button>
-</form> 
+</form>
 
 
 

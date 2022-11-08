@@ -1,3 +1,5 @@
+@include('layouts.head')
+
 <form  action="{{route('brief.store')}}"method="POST" >
     @csrf
     nom du brief : <input type="text" name="nom">

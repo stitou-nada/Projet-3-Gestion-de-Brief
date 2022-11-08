@@ -1,3 +1,4 @@
+@include('layouts.head')
 
 <form  action="{{route('tache.store')}}"method="POST" >
     @csrf

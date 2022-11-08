@@ -1,4 +1,8 @@
+
+@include('layouts.head')
+
 <a href="{{route('brief.create')}}">Ajouter brief</a>
+
 <table>
     <thead>
         <tr>

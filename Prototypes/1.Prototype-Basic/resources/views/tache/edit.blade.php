@@ -1,6 +1,6 @@
+@include('layouts.head')
+
 @foreach ($tache as $value)
-
-
 <form  action="{{route('tache.update',$value->id)}}" method="POST" >
     @csrf
     @method("PUT")
