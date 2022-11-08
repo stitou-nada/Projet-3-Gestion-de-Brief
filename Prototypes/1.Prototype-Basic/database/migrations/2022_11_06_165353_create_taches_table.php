@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string("Nom_de_la_tache")->nullable();
             $table->timestamp("Debut_de_la_tache")->nullable();
             $table->timestamp("Fin_de_la_tache")->nullable();
-            $table->foreignId("brief_id")
-            ->referance('id')
-            ->on('promotion');
+            $table->unsignedInteger("brief_id");
+            $table->foreign('brief_id')
+            ->references('id')
+            ->on('briefs')
+            ->onDelete('cascade');
         });
     }
 
