@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\tache;
+use App\Models\apprenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,4 +20,7 @@ class Brief extends Model
         return $this->hasMany(tache::class);
     }
 
+    public function apprenant(){
+        return $this->belongsToMany(apprenant::class);
+    }
 }
