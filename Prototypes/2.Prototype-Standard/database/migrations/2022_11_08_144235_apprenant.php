@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('briefs', function (Blueprint $table) {
+        Schema::create('apprenant', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("Nom_du_brief")->nullable();
-            $table->timestamp("Date_heure_de_livraison")->nullable();
-            $table->timestamp("Date_heure_de_récupération")->nullable();
+            $table->string("Nom")->nullable();
+            $table->string("Prenom")->nullable();
+            $table->string("Email")->nullable();
         });
-    }
+     }
 
     /**
      * Reverse the migrations.
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('briefs');
+        //
     }
 };

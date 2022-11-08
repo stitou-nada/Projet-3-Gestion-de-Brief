@@ -13,20 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('taches', function (Blueprint $table) {
-            $table->id();
-            $table->string("Nom_de_la_tache")->nullable();
-            $table->timestamp("Debut_de_la_tache")->nullable();
-            $table->timestamp("Fin_de_la_tache")->nullable();
+        Schema::create('apprenant_brief', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger("apprenant_id");
             $table->unsignedInteger("brief_id");
+            $table->foreign('apprenant_id')
+            ->references('id')
+            ->on('apprenant')
+            ->onDelete('cascade');
             $table->foreign('brief_id')
             ->references('id')
             ->on('briefs')
             ->onDelete('cascade');
 
-
-        });
-    }
+             });
+     }
 
     /**
      * Reverse the migrations.
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taches');
+        //
     }
 };
