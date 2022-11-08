@@ -1,3 +1,4 @@
+
 <form  action="{{route('tache.store')}}"method="POST" >
     @csrf
     nom du tache : <input type="text" name="nom">

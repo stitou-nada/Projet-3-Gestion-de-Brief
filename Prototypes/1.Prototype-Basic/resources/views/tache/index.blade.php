@@ -1,4 +1,6 @@
+
 <a href="{{route('tache.create')}}">Ajouter tache</a>
+
 
 <table>
     <thead>
@@ -12,7 +14,7 @@
     </thead>
     <tbody>
         @foreach ($tache as $value)
-            
+
         <tr>
             <td>{{$value->id}}</td>
             <td>{{$value->Nom_de_la_tache}}</td>
