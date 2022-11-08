@@ -21,7 +21,7 @@
 
 <form action="{{route('tache.create')}}" method="get" >
 
-<button type="submit" class="btn btn-primary">Ajouter tache</button>
+<button type="submit" class="btn btn-primary">Add tache</button>
 <input type="hidden" value="{{$brief->id}}" name="brief_id">
 </form>
 
@@ -30,9 +30,9 @@
       <tr>
 
             <th scope="col">id</th>
-            <th scope="col">Nom de brief</th>
-            <th scope="col">Date heure de livraison</th>
-            <th scope="col">Date heure derécupération</th>
+            <th scope="col">Nom de tache</th>
+            <th scope="col">Debut du tache</th>
+            <th scope="col">Fin du tache</th>
             <th scope="col">Action</th>
             <th></th>
       </tr>

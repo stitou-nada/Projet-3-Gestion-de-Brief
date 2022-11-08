@@ -2,7 +2,7 @@
 @include('layouts.head')
 
 
-<a  href="{{route('brief.create')}}" style="margin-bottom: 12px" class="btn btn-primary" >Ajouter brief</a>
+<a  href="{{route('brief.create')}}" style="margin-bottom: 12px" class="btn btn-primary" >Add brief</a>
 
 <table class="table">
     <thead class="thead-dark" style="background-color:black ;color:azure">
