@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\apprenant;
+use App\Models\apprenant_brief;
 use App\Models\Brief;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,11 @@ class assignerController extends Controller
    
     public function store(Request $request)
     {
-        //
+        apprenant_brief::create([
+            'apprenant_id' => $request->apprenant_id,
+            'brief_id' => $request->brief_id,
+        ]);
+        return back();
     }
 
     
@@ -32,7 +37,7 @@ class assignerController extends Controller
     {
         $apprenant =apprenant::all();
         $apprenantAssinger = Brief::find($id)->apprenant;
-        return view('brief.assigner',compact('apprenant','apprenantAssinger'));
+        return view('brief.assigner',compact('apprenant','apprenantAssinger','id'));
     }
 
    
@@ -47,8 +52,12 @@ class assignerController extends Controller
     }
 
    
-    public function destroy($id)
+    public function destroy(Request $request )
     {
-        //
+        apprenant_brief::where([
+        ['apprenant_id',$request->apprenant_id],
+        ['brief_id',$request->brief_id]
+        ])->delete();
+        return back();
     }
 }
