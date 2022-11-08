@@ -1,15 +1,22 @@
 @include('layouts.head')
 
-
-<form  action="{{route('brief.update',$brief->id)}}" method="POST" >
+<form  action="{{route('brief.update',$brief->id)}}" method="POST"  >
     @csrf
     @method("PUT")
-    nom du brief : <input type="text" value="{{$brief->Nom_du_brief}}" name="nom">
-    Date/heure de livraison : <input type="datetime-local" value="{{$brief->Date_heure_de_livraison}}" name="livraison">
-    Date/heure de récupération : <input type="datetime-local"  value="{{$brief->Date_heure_de_récupération}}" name="recuperation">
-    <button type="submit">Ajouter</button>
-</form>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        Nom du brief :<input type="text" class="form-control"  value="{{$brief->Nom_du_brief}}" name="nom" >
+      </div>
+      <div class="form-group col-md-2">
+        Date/heure de livraison :<input type="datetime-local" class="form-control" value="{{$brief->Date_heure_de_livraison}}" name="livraison" >
+      </div>
+      <div class="form-group col-md-2">
+        Date/heure de récupération :<input type="datetime-local" class="form-control" value="{{$brief->Date_heure_de_récupération}}" name="recuperation" >
+      </div>
+    </div>
 
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
 
 
 <form action="{{route('tache.create')}}" method="get" >
@@ -18,41 +25,45 @@
 <input type="hidden" value="{{$brief->id}}" name="brief_id">
 </form>
 
-<table>
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Nom de tache</th>
-            <th>Debut de la tache</th>
-            <th>Fin de la tache</th>
-            <th>Action</th>
-        </tr>
+<table class="table">
+    <thead class="thead-dark" style="background-color:black ;color:azure">
+      <tr>
+
+            <th scope="col">id</th>
+            <th scope="col">Nom de brief</th>
+            <th scope="col">Date heure de livraison</th>
+            <th scope="col">Date heure derécupération</th>
+            <th scope="col">Action</th>
+            <th></th>
+      </tr>
     </thead>
     <tbody>
         @foreach ($tache as $value)
+      <tr>
+        <th scope="row">{{$value->id}}</th>
+        <td>{{$value->Nom_de_la_tache}}</td>
+        <td>{{$value->Debut_de_la_tache}}</td>
+        <td>{{$value->Fin_de_la_tache}}</td>
+        <td>
+            <form action="{{route('tache.edit',$value->id)}}">
+                <button type="submit" class="btn btn-success">Edit</button>
 
-        <tr>
-            <td>{{$value->id}}</td>
-            <td>{{$value->Nom_de_la_tache}}</td>
-            <td>{{$value->Debut_de_la_tache}}</td>
-            <td>{{$value->Fin_de_la_tache}}</td>
+            </form>
+            </td>
             <td>
-                <form action="{{route('tache.edit',$value->id)}}">
-                    <button>edit</button>
-                </form>
-                </td>
-                <td>
-                <form action="{{route('tache.destroy',$value->id)}}" method="POST">
-                    @method("DELETE")
-                    @csrf
-                    <button>delete</button>
-                </form>
-               </td>
-        </tr>
-        @endforeach
+            <form action="{{route('tache.destroy',$value->id)}}" method="POST">
+                @method("DELETE")
+                @csrf
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+           </td>
+      </tr>
+      @endforeach
 
     </tbody>
-</table>
 
-<a href="{{route('brief.index')}}">retourn</a>
+  </table>
 
+<form action="{{route('brief.index')}}">
+  <button type="submit" class="btn btn-dark">Retourn</button>
+</form>
