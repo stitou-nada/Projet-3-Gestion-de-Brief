@@ -17,7 +17,8 @@ class BriefController extends Controller
 
     public function create()
     {
-        return view('biref.create');
+
+        return view('brief.create');
     }
 
 
@@ -41,9 +42,11 @@ class BriefController extends Controller
 
     public function edit($id)
     {
-        $brief = brief::where('id',$id)
-        ->get();
-        return view('brief.edit',compact('brief'));
+        $brief = brief::find($id)
+        ;
+
+        $tache = brief::find($id)->Tache;
+        return view('brief.edit',compact('brief','tache'));
     }
 
 

@@ -7,8 +7,8 @@
     nom du brief : <input type="text" value="{{$value->Nom_de_la_tache}}" name="nom">
     Date/heure de livraison : <input type="datetime-local" value="{{$value->Debut_de_la_tache}}" name="debut_tache">
     Date/heure de récupération : <input type="datetime-local"  value="{{$value->Fin_de_la_tache}}" name="fin_tache">
-    <button type="submit">Ajouter</button>
+    <input type="hidden" value="{{$value->brief_id}}" name="brief_id">
+    <button type="submit">Editer</button>
 </form>
 @endforeach
 
-<a href="{{route('tache.index')}}">retourn</a>

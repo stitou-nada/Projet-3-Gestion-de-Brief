@@ -12,13 +12,14 @@ class TacheController extends Controller
     public function index()
     {
         $tache = tache::all();
-        return view('tache.index',compact('tache'));
+        return view('brief.edit',compact('tache'));
     }
 
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('tache.create');
+        $id= $request->brief_id;
+        return view('tache.create',compact('id'));
     }
 
 
@@ -28,9 +29,9 @@ class TacheController extends Controller
             "Nom_de_la_tache"=> $request->nom,
             "Debut_de_la_tache"=> $request->debut_tache,
             "Fin_de_la_tache"=> $request->fin_tache,
+            "brief_id"=> $request->brief_id,
         ])->save();
-
-        return redirect('tache');
+        return redirect('brief/'.$request->brief_id .'/edit');
     }
 
 
@@ -44,7 +45,8 @@ class TacheController extends Controller
     {
         $tache = tache::where('id',$id)
         ->get();
-        return view('tache.edit',compact('tache'));    }
+        return view('tache.edit',compact('tache'));
+    }
 
 
     public function update(Request $request, $id)
@@ -55,7 +57,7 @@ class TacheController extends Controller
             "Debut_de_la_tache"=> $request->debut_tache,
             "Fin_de_la_tache"=> $request->fin_tache,
         ]);
-        return redirect('tache');
+        return redirect('brief/'.$request->brief_id.'/edit');
     }
 
 
@@ -63,6 +65,6 @@ class TacheController extends Controller
     {
         tache::find($id)
         ->delete();
-        return redirect('tache');
+        return back();
     }
 }

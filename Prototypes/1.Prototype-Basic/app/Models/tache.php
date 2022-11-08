@@ -13,5 +13,6 @@ class tache extends Model
         "Nom_de_la_tache",
         "Debut_de_la_tache",
         "Fin_de_la_tache",
+        "brief_id",
     ];
 }
