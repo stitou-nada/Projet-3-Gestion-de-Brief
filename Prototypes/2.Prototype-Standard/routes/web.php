@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BriefController;
+use App\Http\Controllers\TacheController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::resource('/brief',BriefController::class);
+
+Route::resource('/tache',TacheController::class);
