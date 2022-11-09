@@ -10,13 +10,14 @@ class TacheController extends Controller
 
     public function index()
     {
-       
+
     }
 
 
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $id = $request->brief_id;
+        return view('tache.create',compact('id'));
     }
 
 

@@ -19,8 +19,11 @@
   </form>
 
 
+  <form action="{{route('tache.create')}}"  method="get" >
 
-  <a  href="" style="margin-bottom: 12px" class="btn btn-primary" >Add brief</a>
+    <button type="submit" class="btn btn-primary">Add tache</button>
+    <input type="hidden" value="{{$brief->id}}" name="brief_id">
+    </form>
 
 <table class="table">
     <thead class="thead-dark" style="background-color:black ;color:azure">
@@ -43,7 +46,7 @@
         <td>{{$value->Fin_de_la_tache}}</td>
           <td>
               <form action="" method="POST">
-              
+
                 <a href="" class="btn btn-warning">Edit</a>
                 <button type="submit" class="btn btn-danger">Delete</button>
 
