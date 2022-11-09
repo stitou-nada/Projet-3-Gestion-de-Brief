@@ -1,6 +1,14 @@
 
 @include('layouts.head')
 
+<div style="margin-bottom: 19px; padding-left: 662px; padding-top: 15px;">
+<a  href="{{route('promotion.index')}}"  class="btn btn-light" >Promotion</a>
+<a  href="{{route('brief.index')}}"  class="btn btn-success" >Brief</a>
+</div>
+
+
+
+
 
 <a  href="{{route('brief.create')}}" style="margin-bottom: 12px" class="btn btn-primary" >Add brief</a>
 

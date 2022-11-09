@@ -10,14 +10,14 @@
             <h4>{{$valuee->Nom}} {{$valuee->Prenom}}</h4>
         </td>
         <td>
-            <form action="{{route('assigner.destroy',$valuee->id)}}" method="POST">
+            <form action="{{route('assigner.destroy',$valuee->id)}}" method="POST" style="padding-right: 1091px;">
                 @csrf
                 @method('DELETE')
               <input type="hidden" value="{{$valuee->id}}" name="apprenant_id">
               <input type="hidden" value="{{$id}}" name="brief_id">
 
                 <button class="btn btn-danger btn-lg">-</button>
-        </form>
+            </form>
         </td>
     </tr>
     </table>
@@ -37,7 +37,7 @@
     </td>
     <td>
 
-    <form action="{{route("assigner.store")}}" method="POST">
+    <form action="{{route("assigner.store")}}" method="POST"style="padding-right: 1091px;">
         @csrf
        <input type="hidden" value="{{$value->id}}" name="apprenant_id">
        <input type="hidden"  value="{{$id}}" name="brief_id">

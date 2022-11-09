@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class promotion extends Model
 {
     use HasFactory;
+    protected $table = 'promotion';
+    public $timestamps = FALSE;
+    protected $fillable=[
+       "nom",  
+   ];
 }
