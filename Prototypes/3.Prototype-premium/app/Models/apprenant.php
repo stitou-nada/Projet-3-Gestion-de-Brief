@@ -14,7 +14,8 @@ class apprenant extends Model
      protected $fillable=[
         "Nom",
         "Prenom",
-        "Email"
+        "Email",
+        "promotion_id"
     ];
     public function brief(){
         return $this->belongsToMany(brief::class);

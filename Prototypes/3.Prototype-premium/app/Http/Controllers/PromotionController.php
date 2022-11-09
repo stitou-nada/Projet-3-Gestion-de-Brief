@@ -38,7 +38,8 @@ class PromotionController extends Controller
     public function edit( $id)
     {
         $promotion = promotion::find($id);
-        return view('promotion.edit',compact('promotion'));
+        $apprenant = promotion::find($id)->hasManyApprenant;
+        return view('promotion.edit',compact('promotion','apprenant'));
     }
 
     

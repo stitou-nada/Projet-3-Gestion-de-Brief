@@ -7,79 +7,62 @@ use Illuminate\Http\Request;
 
 class ApprenantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    
+    public function create(Request $request)
     {
-        //
+        $id = $request->promotion_id;
+        return view('apprenant.create',compact('id'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        apprenant::create([
+            'Nom'=>$request->nom,
+            'Prenom'=>$request->prenom,
+            'Email'=>$request->email,
+            'promotion_id'=>$request->promotion_id
+        ])->save();
+        return redirect('promotion/'.$request->promotion_id.'/edit');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\apprenant  $apprenant
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(apprenant $apprenant)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\apprenant  $apprenant
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(apprenant $apprenant)
+    
+    public function edit( $id)
     {
-        //
+        $apprenant =apprenant::find($id);
+        return view('apprenant.edit',compact('apprenant'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\apprenant  $apprenant
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, apprenant $apprenant)
+    
+    public function update(Request $request, $id)
     {
-        //
+        apprenant::find($id)
+        ->update([
+            'Nom'=>$request->nom,
+            'Prenom'=>$request->prenom,
+            'Email'=>$request->email,
+            'promotion_id'=>$request->promotion_id
+        ]);
+        return redirect('promotion/'.$id.'/edit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\apprenant  $apprenant
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(apprenant $apprenant)
+   
+    public function destroy($id)
     {
-        //
+        apprenant::find($id)
+        ->delete();
+        return back();
     }
 }

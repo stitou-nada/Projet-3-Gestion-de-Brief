@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApprenantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BriefController;
 use App\Http\Controllers\TacheController;
@@ -29,5 +30,7 @@ Route::resource('/tache',TacheController::class);
 Route::resource('/assigner',AssignerController::class);
 
 Route::resource('/promotion',PromotionController::class);
+
+Route::resource('/apprenant',ApprenantController::class);
 
 
