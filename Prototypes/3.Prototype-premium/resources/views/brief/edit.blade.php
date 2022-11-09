@@ -45,9 +45,10 @@
         <td>{{$value->Debut_de_la_tache}}</td>
         <td>{{$value->Fin_de_la_tache}}</td>
           <td>
-              <form action="" method="POST">
-
-                <a href="" class="btn btn-warning">Edit</a>
+              <form action="{{route('tache.destroy',$value->id)}}" method="POST">
+                @csrf
+                @method("DELETE")
+                <a href="{{route('tache.edit',$value->id)}}" class="btn btn-warning">Edit</a>
                 <button type="submit" class="btn btn-danger">Delete</button>
 
               </form>
@@ -59,3 +60,4 @@
 
   </table>
 
+  <a href="{{route('brief.index')}}">Retourn</a>

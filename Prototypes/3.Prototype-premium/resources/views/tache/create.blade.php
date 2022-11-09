@@ -13,6 +13,7 @@
       <div class="form-group col-md-2">
         Date/heure de récupération :<input type="datetime-local" class="form-control" name="fin_tache" >
       </div>
+      <input type="hidden" value="{{$id}}" name="brief_id">
     </div>
 
     <button type="submit" class="btn btn-primary">Ajouter</button>
