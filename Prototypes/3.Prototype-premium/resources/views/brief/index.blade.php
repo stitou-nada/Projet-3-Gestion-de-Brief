@@ -4,6 +4,7 @@
 
 <a  href="{{route('brief.create')}}" style="margin-bottom: 12px" class="btn btn-primary" >Add brief</a>
 
+
 <table class="table">
     <thead class="thead-dark" style="background-color:black ;color:azure">
       <tr>
@@ -29,7 +30,7 @@
                @method('DELETE')
                 <a href="{{route('brief.edit',$value->id)}}" class="btn btn-warning">Edit</a>
                 <button type="submit" class="btn btn-danger">Delete</button>
-
+                <a  href="{{route('assigner.show',$value->id)}}" class="btn btn-info">Assigner</a>
               </form>
            </td>
       </tr>
