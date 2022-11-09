@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\tache;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,4 +15,8 @@ class brief extends Model
        "Date_heure_de_livraison",
        "Date_heure_de_récupération"
    ];
+
+   public function hasManyTache(){
+    return $this->hasMany(tache::class);
+   }
 }

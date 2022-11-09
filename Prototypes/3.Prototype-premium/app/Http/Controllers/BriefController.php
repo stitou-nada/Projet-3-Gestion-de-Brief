@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\brief;
+use App\Models\tache;
 use Illuminate\Http\Request;
 
 class BriefController extends Controller
@@ -43,7 +44,8 @@ class BriefController extends Controller
     public function edit($id)
     {
          $brief = brief::find($id);
-         return view('brief.edit',compact('brief'));
+        $tache = brief::find($id)->hasManyTache;
+         return view('brief.edit',compact('brief','tache'));
     }
 
     public function update(Request $request, $id)
@@ -54,7 +56,7 @@ class BriefController extends Controller
             "Date_heure_de_livraison"=>$request->livraison,
             "Date_heure_de_récupération"=>$request->recuperation,
         ]);
-        return redirect('brief');
+        return redirect('brief/'.$id.'/edit');
     }
 
     public function destroy( $id)
