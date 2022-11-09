@@ -24,15 +24,13 @@
         <td>{{$value->Date_heure_de_livraison}}</td>
         <td>{{$value->Date_heure_de_récupération}}</td>
           <td>
-            <a href="{{route('brief.edit',$value->id)}}" class="btn btn-warning">Edit</a>
-          </td>
-            <td>
-            <form action="{{route('brief.destroy',$value->id)}}" method="POST">
+              <form action="{{route('brief.destroy',$value->id)}}" method="POST">
                 @method("DELETE")
                 @csrf
+                <a href="{{route('brief.edit',$value->id)}}" class="btn btn-warning">Edit</a>
                 <button type="submit" class="btn btn-danger">Delete</button>
+                <a  href="{{route('assigner.show',$value->id)}}" class="btn btn-info">Assigner</a>
               </form>
-              <a  href="{{route('assigner.show',$value->id)}}" class="btn btn-info">Assigner</a>
            </td>
       </tr>
       @endforeach
