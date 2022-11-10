@@ -13,5 +13,6 @@ class apprenant_brief extends Model
      protected $fillable=[
         "apprenant_id",
         "brief_id",
+        "promotionID",
     ];
 }

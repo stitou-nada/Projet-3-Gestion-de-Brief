@@ -1,16 +1,17 @@
 @include('layouts.head')
 
 
-      <h2 style="color: blue">
-       Assigner apprenant <a href="{{route('assigner.addAll',['id' => $id])}}"class="btn btn-primary">All</a>
+      <h2>
     </h2>
-@foreach ($students as $value)
+    Assigner apprenant <a href="{{route('assigner.addAll',['id' => $id])}}"class="btn btn-primary">All</a>
+    @foreach ($students as $value)
 @if (!in_array($value->id, $assigned))
     <p>{{$value->Nom}} <p>
         <form action="{{route("assigner.store")}}" method="POST"style="padding-right: 1091px;">
             @csrf
         <input type="hidden" value="{{$value->id}}" name="apprenant_id">
         <input type="hidden"  value="{{$id}}" name="brief_id">
+        <input type="hidden"  value="{{$value->promotion_id}}" name="promotion_id">
 
         <button class="btn btn-primary btn-lg">+</button>
 

@@ -35,6 +35,7 @@ class AssignerController extends Controller
             apprenant_brief::create([
             "apprenant_id"=>$request->apprenant_id,
             "brief_id"=>$request->brief_id,
+            "promotionID"=>$request->promotion_id,
         ]);
 
            }
@@ -44,12 +45,13 @@ class AssignerController extends Controller
     public function addAll()
     {
         $students = promotion::latest()->first()->hasManyApprenant;
-        // dd(request()->id);
+
         foreach ($students as $student) {
             if (is_null(brief::find(request()->id)->apprenant()->find($student->id))) {
                 apprenant_brief::create([
                     'apprenant_id' => $student->id,
-                    'brief_id' => request()->id
+                    'brief_id' => request()->id,
+                    'promotionID' => $student->promotion_id,
                 ]);
             }
         };

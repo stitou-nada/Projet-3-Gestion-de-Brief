@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\promotion;
+use App\Models\brief;
 use Illuminate\Http\Request;
 
 class PromotionController extends Controller
 {
-    
+
     public function index()
     {
         $promotion = promotion::all();
@@ -19,7 +20,7 @@ class PromotionController extends Controller
         return view('promotion.create');
     }
 
-    
+
     public function store(Request $request)
     {
          promotion::create([
@@ -28,21 +29,25 @@ class PromotionController extends Controller
              return redirect('promotion');
     }
 
-    
+
     public function show(promotion $promotion)
     {
         //
     }
 
-    
+
     public function edit( $id)
     {
         $promotion = promotion::find($id);
         $apprenant = promotion::find($id)->hasManyApprenant;
+
+        $brief = brief::where('promotion');
+        dd($brief->apprenant);
+
         return view('promotion.edit',compact('promotion','apprenant'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
         promotion::find($id)
@@ -52,7 +57,7 @@ class PromotionController extends Controller
         return redirect('promotion/'.$id.'/edit');
     }
 
-    
+
     public function destroy( $id)
     {
         promotion::find($id)
