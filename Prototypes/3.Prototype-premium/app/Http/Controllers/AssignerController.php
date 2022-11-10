@@ -65,9 +65,7 @@ class AssignerController extends Controller
 
 
         $students = promotion::latest()->first()->hasManyApprenant;
-        // dd($students);
         $brief = brief::where('id', $id)->firstOrFail();
-        // dd($brief);
         $assigned = array_map(function ($student) {
             return $student['id'];
         }, $brief->apprenant->toArray());
