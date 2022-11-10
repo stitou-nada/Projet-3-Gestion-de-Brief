@@ -26,7 +26,6 @@ class AssignerController extends Controller
 
     public function store(Request $request)
     {
-    //    $all= $request->All_apprenant;
     $all = promotion::latest()->first()->hasManyApprenant;
 
     foreach ($all as $value) {
@@ -41,6 +40,20 @@ class AssignerController extends Controller
            }
             return back();
         }
+    }
+    public function addAll()
+    {
+        $students = promotion::latest()->first()->hasManyApprenant;
+        // dd(request()->id);
+        foreach ($students as $student) {
+            if (is_null(brief::find(request()->id)->apprenant()->find($student->id))) {
+                apprenant_brief::create([
+                    'apprenant_id' => $student->id,
+                    'brief_id' => request()->id
+                ]);
+            }
+        };
+        return back();
     }
 
 
@@ -59,12 +72,7 @@ class AssignerController extends Controller
             return $student['id'];
         }, $brief->apprenant->toArray());
 
-//
-//
-//
-//
-//
-//
+
         $apprenant_id= apprenant::select("id")->get();
         $apprenant = apprenant::all();
         $apprenantAssigner = brief::find($id)->apprenant;
@@ -96,19 +104,6 @@ class AssignerController extends Controller
         return back();
     }
 
-    public function addAll()
-    {
-        $students = promotion::latest()->first()->hasManyApprenant;
-        // dd(request()->id);
-        foreach ($students as $student) {
-            if (is_null(brief::find(request()->id)->apprenant()->find($student->id))) {
-                apprenant_brief::create([
-                    'apprenant_id' => $student->id,
-                    'brief_id' => request()->id
-                ]);
-            }
-        };
-        return back();
-    }
+
 
 }
