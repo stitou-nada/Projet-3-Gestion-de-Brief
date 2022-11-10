@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\promotion;
 use App\Models\brief;
+use App\Models\apprenant_brief;
 use Illuminate\Http\Request;
 
 class PromotionController extends Controller
@@ -41,10 +42,12 @@ class PromotionController extends Controller
         $promotion = promotion::find($id);
         $apprenant = promotion::find($id)->hasManyApprenant;
 
-        $brief = brief::where('promotion');
-        dd($brief->apprenant);
-
-        return view('promotion.edit',compact('promotion','apprenant'));
+       $brief = apprenant_brief::select('briefs.Nom_du_brief')
+       ->where('promotionID',$id)
+       ->join("briefs",'apprenant_brief.brief_id','=','briefs.id')
+       ->groupBy('briefs.Nom_du_brief')
+       ->get();
+        return view('promotion.edit',compact('promotion','apprenant','brief'));
     }
 
 

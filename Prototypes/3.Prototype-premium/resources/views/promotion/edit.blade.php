@@ -13,8 +13,10 @@
   </form>
 
 
+@foreach ($brief as $valueBrief)
 
-
+<h2>{{$valueBrief->Nom_du_brief}}</h2>
+@endforeach
   <form action="{{route('apprenant.create')}}"  method="get" >
 
     <button type="submit" class="btn btn-primary">Add apprenant</button>
@@ -57,4 +59,3 @@
   </table>
 
   <a href="{{route('promotion.index')}}">retourn</a>
-  
