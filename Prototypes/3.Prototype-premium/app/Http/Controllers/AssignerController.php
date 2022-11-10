@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\apprenant;
+use App\Models\promotion;
 use App\Models\brief;
 use App\Models\apprenant_brief;
 use Illuminate\Http\Request;
@@ -25,19 +26,49 @@ class AssignerController extends Controller
 
     public function store(Request $request)
     {
+    //    $all= $request->All_apprenant;
+    $all = promotion::latest()->first()->hasManyApprenant;
+
+    foreach ($all as $value) {
+        if(is_null(brief::find($request->brief_id)
+          ->apprenant()
+          ->find($request->apprenant_id))){
             apprenant_brief::create([
-                "apprenant_id"=>$request->apprenant_id,
-                "brief_id"=>$request->brief_id,
-            ]);
-          return back();
+            "apprenant_id"=>$request->apprenant_id,
+            "brief_id"=>$request->brief_id,
+        ]);
+
+           }
+            return back();
+        }
     }
+
+
+
 
 
     public function show( $id)
     {
+
+
+        $students = promotion::latest()->first()->hasManyApprenant;
+        // dd($students);
+        $brief = brief::where('id', $id)->firstOrFail();
+        // dd($brief);
+        $assigned = array_map(function ($student) {
+            return $student['id'];
+        }, $brief->apprenant->toArray());
+
+//
+//
+//
+//
+//
+//
+        $apprenant_id= apprenant::select("id")->get();
         $apprenant = apprenant::all();
         $apprenantAssigner = brief::find($id)->apprenant;
-        return view('brief.assigner',compact('apprenant','apprenantAssigner','id'));
+        return view('brief.assigner',compact('apprenant','apprenantAssigner',"apprenant_id",'id' ,'brief','students',"assigned"));
     }
 
     public function edit(AssignerController $assignerController)
@@ -64,4 +95,20 @@ class AssignerController extends Controller
 
         return back();
     }
+
+    public function addAll()
+    {
+        $students = promotion::latest()->first()->hasManyApprenant;
+        // dd(request()->id);
+        foreach ($students as $student) {
+            if (is_null(brief::find(request()->id)->apprenant()->find($student->id))) {
+                apprenant_brief::create([
+                    'apprenant_id' => $student->id,
+                    'brief_id' => request()->id
+                ]);
+            }
+        };
+        return back();
+    }
+
 }

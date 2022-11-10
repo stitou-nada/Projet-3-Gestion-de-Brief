@@ -10,9 +10,9 @@ class promotion extends Model
 {
     use HasFactory;
     protected $table = 'promotion';
-    public $timestamps = FALSE;
+    public $timestamps = true;
     protected $fillable=[
-       "nom",  
+       "nom",
    ];
 
    public function hasManyApprenant(){

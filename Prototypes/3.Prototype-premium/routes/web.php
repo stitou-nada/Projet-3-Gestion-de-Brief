@@ -34,3 +34,5 @@ Route::resource('/promotion',PromotionController::class);
 Route::resource('/apprenant',ApprenantController::class);
 
 
+Route::get('/assigner',[AssignerController::class,'addAll'])->name('assigner.addAll');
+

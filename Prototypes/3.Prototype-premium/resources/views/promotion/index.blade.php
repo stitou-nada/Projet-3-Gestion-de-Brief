@@ -20,8 +20,8 @@
             <th scope="col">id</th>
             <th scope="col">Nom de promotion</th>
             <th scope="col">Action</th>
-            <th></th>
-      </tr>
+
+        </tr>
     </thead>
     <tbody>
         @foreach ($promotion as $value)
@@ -34,7 +34,7 @@
                @method('DELETE')
                 <a href="{{route('promotion.edit',$value->id)}}" class="btn btn-warning">Edit</a>
                 <button type="submit" class="btn btn-danger">Delete</button>
-                
+
               </form>
            </td>
       </tr>
