@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\ApprenantController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BriefController;
+use App\Http\Controllers\TacheController;
+use App\Http\Controllers\AssignerController;
+use App\Http\Controllers\PromotionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +21,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/brief',BriefController::class);
+
+Route::resource('/tache',TacheController::class);
+
+
+Route::resource('/assigner',AssignerController::class);
+
+Route::resource('/promotion',PromotionController::class);
+
+Route::resource('/apprenant',ApprenantController::class);
+
+
+Route::get('/assigner',[AssignerController::class,'addAll'])->name('assigner.addAll');
+
