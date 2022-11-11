@@ -1,16 +1,15 @@
 
 @extends('master')
 @section('content')
-    
+
   <div class="main-panel">
-     
+
     <div class="content">
+        <h1 class="titre" > Ajouter Brief </h1>
       <div class="row">
         <div class="col-md-8">
           <div class="card">
-            <div class="card-header">
-              <h5 class="title">Add Brief </h5>
-            </div>
+
             <div class="card-body">
               <form  action="{{route('brief.store')}}" method="POST" >
                 @csrf
@@ -21,8 +20,8 @@
                       <input type="text" class="form-control" placeholder="nom " name="nom" >
                     </div>
                   </div>
-                  
-                  
+
+
                 </div>
                 <div class="row">
                   <div class="col-md-6 pr-md-1">
@@ -40,14 +39,14 @@
                 </div>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                <button type="submit" class="btn btn-fill btn-primary">Ajouter</button>
               </div>
             </form>
           </div>
+          <a href="{{route('brief.index')}}" class="btn btn-seccess">retourn</a>
         </div>
-        
+
       </div>
-      
-      <a href="{{route('brief.index')}}" class="btn btn-seccess">retourn</a>
+
   </div>
   @endsection

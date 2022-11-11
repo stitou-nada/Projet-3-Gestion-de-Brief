@@ -6,12 +6,11 @@
   <div class="main-panel">
 
     <div class="content">
+        <h1 class="titre" > Ajouter Tache </h1>
       <div class="row">
         <div class="col-md-8">
           <div class="card">
-            <div class="card-header">
-              <h5 class="title">Add Tache</h5>
-            </div>
+
             <div class="card-body">
               <form  action="{{route('tache.store')}}" method="POST" >
                 @csrf
@@ -41,7 +40,7 @@
                   <input type="hidden" value="{{$id}}" name="brief_id">
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-fill btn-primary">Add</button>
+                  <button type="submit" class="btn btn-fill btn-primary">Ajouter</button>
                 </div>
               </form>
             </div>

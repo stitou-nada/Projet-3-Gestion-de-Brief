@@ -5,3 +5,25 @@
     /* width: 314px !important; */
 }
 
+
+
+.td-btn-briefs{
+display: flex;
+    justify-content: space-evenly;
+}
+ .titre{
+    color: #ffffff;
+    padding-left: 474px;
+    font-size: 48px;
+ }
+
+
+ .row{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+    justify-content: space-around !important;
+ }
+
+

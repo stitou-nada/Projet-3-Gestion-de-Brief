@@ -3,12 +3,11 @@
 
   <div class="main-panel">
   <div class="content">
+    <h1 class="titre" > Ajouter Promotion </h1>
     <div class="row">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">
-            <h2 class="title">Add  Promotion</h2>
-          </div>
+
           <div class="card-body">
             <form action="{{route('promotion.store')}}" method="POST">
               @csrf
@@ -22,7 +21,7 @@
               </div>
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-fill btn-primary">Add</button>
+              <button type="submit" class="btn btn-fill btn-primary">Ajouter</button>
             </div>
           </form>
         </div>

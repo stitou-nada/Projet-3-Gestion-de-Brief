@@ -3,12 +3,11 @@
 
   <div class="main-panel">
   <div class="content">
+    <h1 class="titre" > Modifier Promotion </h1>
     {{-- <div class="row">
       <div class="col-md-8"> --}}
         <div class="card">
-          <div class="card-header">
-            <h2 class="title">Edit Promotion</h2>
-          </div>
+
           <div class="card-body">
             <form  action="{{route('promotion.update',$promotion->id)}}" method="POST"  >
               @csrf
@@ -16,8 +15,9 @@
                  <div class="row">
                 <div class="col-md-5 pr-md-1">
                   <div class="form-group">
-                    <label>Nom Promotion</label>
-                    <input type="text" class="form-control" placeholder="nom " value="{{$promotion->nom}}" name="nom" >
+                    <h1>Nom Promotion </h1>
+                    <h4 style="color: rgb(238, 0, 255)" class="text title"  onclick="change()"> {{$promotion->nom}}</h4>
+                    <input type="hidden"  class="form-control input" placeholder="nom " value="{{$promotion->nom}}" name="nom" >
                   </div>
                 </div>
 
@@ -26,7 +26,7 @@
 
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-fill btn-primary">Editer</button>
+              <button type="submit" class="btn btn-fill btn-primary">Modifier</button>
             </div>
            </form>
           </div>
@@ -68,9 +68,9 @@
                           <form action="{{route('apprenant.destroy',$value->id)}}" method="POST">
                             @csrf
                             @method("DELETE")
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button  style=" all: unset; cursor: pointer; font-size:25px" ><i class="fa fa-trash"></i></button>
                           </form>
-                            <a href="{{route('apprenant.edit',$value->id)}}" class="btn btn-seccess">Edit</a>
+                            <a href="{{route('apprenant.edit',$value->id)}}" style="font-size:25px" ><i class="fa fa-edit"></i></a>
                         </td>
 
                       </tr>
@@ -91,4 +91,15 @@
 
   </div>
   </div>
+
+  <script>
+    let text = document.querySelector('.title');
+    let input = document.querySelector('.input');
+
+    function change(){
+        text.style.display = "none"
+        input.setAttribute("type", "text");
+
+    }
+ </script>
   @endsection

@@ -2,11 +2,12 @@
   @section('content')
   <div class="main-panel">
   <div class="content">
+    <h1 class="titre" > Gestion Brief </h1>
     <div class="row">
       <div class="col-md-12">
         <div class="card ">
           <div class="card-header">
-            <a  href="{{route('brief.create')}}"  class="btn btn-primary">Add Brief</a>
+            <a  href="{{route('brief.create')}}"  class="btn btn-primary">Ajouter Brief</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -47,19 +48,19 @@
                     <td >
                       {{$value->Date_heure_de_récupération}}
                     </td>
-                    <td >
+                    <td class="td-btn-briefs" >
                       <form action="{{route('brief.destroy',$value->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                      <a href="{{route('brief.edit',$value->id)}}"class="btn btn-seccess">Edit</a>
-                       <button type="submit" class="btn btn-danger">Delete</button>
-                       <a  href="{{route('assigner.show',$value->id)}}" class="btn btn-info">Assigner</a>
-                      </form>
-                      </td>
-                      <td>
+                      <a href="{{route('brief.edit',$value->id)}}" style="font-size:25px"><i class="fa fa-edit"></i></a>
+
+                    </form>
+                    <button style=" all: unset; cursor: pointer; font-size:25px"><i class="fa fa-trash"></i></button>
 
 
-                        <form action="{{route('tache.create')}}"  method="get" >
+
+                          <form action="{{route('tache.create')}}"  method="get" >
+                            <a  href="{{route('assigner.show',$value->id)}}" class="btn btn-info">Assigner</a>
 
                             <button  class="btn btn-warning">+ Tache</button>
                             <input type="hidden" value="{{$value->id}}" name="brief_id">
