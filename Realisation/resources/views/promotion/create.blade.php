@@ -1,6 +1,7 @@
- @extends('masterIN')
+ @extends('master')
   @section('content')
-   
+
+  <div class="main-panel">  
   <div class="content">
     <div class="row">
       <div class="col-md-8">
@@ -27,6 +28,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
   <a href="{{route('promotion.index')}}">retourn</a>
   @endsection

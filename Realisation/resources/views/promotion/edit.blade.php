@@ -1,6 +1,7 @@
- @extends('masterIN')
+ @extends('master')
   @section('content')
-      
+  
+  <div class="main-panel">
   <div class="content">
     {{-- <div class="row">
       <div class="col-md-8"> --}}
@@ -27,7 +28,7 @@
             <div class="card-footer">
               <button type="submit" class="btn btn-fill btn-primary">Editer</button>
             </div>
-          </form>
+           </form>
           </div>
 
 
@@ -56,7 +57,7 @@
                         <th>Nom </th>
                         <th> Prenom</th>
                         <th>Email</th>
-                        <th class="text-center"> Action</th>
+                        <th > Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -66,15 +67,13 @@
                         <td>{{$value->Nom}}</td>
                         <td>{{$value->Prenom}}</td>
                         <td> {{$value->Email}}</td>
-                        <td class="text-center">
+                        <td>
                           <form action="{{route('apprenant.destroy',$value->id)}}" method="POST">
                             @csrf
                             @method("DELETE")
-                          <a href="{{route('apprenant.edit',$value->id)}}" class="btn btn-seccess">Edit</a>
-                           <button type="submit" class="btn btn-danger">Delete</button>
-                           
-                           
-                          </td>
+                            <a href="{{route('apprenant.edit',$value->id)}}" class="btn btn-seccess">Edit</a>
+                           <button type="submit" class="btn btn-danger">Delete</button>  
+                        </td>
                           
                       </tr>
                       
@@ -92,5 +91,6 @@
 
       
    
+  </div>
   </div>
   @endsection

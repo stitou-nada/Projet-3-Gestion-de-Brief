@@ -10,13 +10,13 @@
       </div>
       <ul class="nav">
         <li class="active ">
-          <a href="./dashboard.html">
+          <a href="{{route('promotion.index')}}">
             <i class="tim-icons icon-chart-pie-36"></i>
             <p>Gestion Promotion</p>
           </a>
         </li>
         <li class="active ">
-          <a href="./dashboard.html">
+          <a href="{{route('brief.index')}}">
             <i class="tim-icons icon-chart-pie-36"></i>
             <p>Gestion Brief</p>
           </a>
