@@ -61,6 +61,13 @@
             </form>
             </div>
             <div class="card-body">
+                   {{-- search  --}}
+                   <div class="search-box-promotion">
+                    <input type="hidden" value="" id="IdKey"   class="form-control  searchInput" >
+                    <input type="text" id="search" class="form-control searchEdit searchInput " placeholder="Recherche&hellip;">
+                  </div>
+              </div>
+              {{-- fin search --}}
               <div class="table-responsive">
                 <table class="table tablesorter " id="">
                   <thead class=" text-primary">

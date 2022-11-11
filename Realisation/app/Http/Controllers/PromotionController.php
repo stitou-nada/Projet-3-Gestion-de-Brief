@@ -67,4 +67,6 @@ class PromotionController extends Controller
         ->delete();
         return back();
     }
+
+
 }

@@ -10,6 +10,13 @@
             <a  href="{{route('brief.create')}}"  class="btn btn-primary">Ajouter Brief</a>
           </div>
           <div class="card-body">
+              {{-- search  --}}
+              <div class="search-box-promotion">
+                 <input type="hidden" value="" id="IdKey"   class="form-control  searchInput" >
+                 <input type="text" id="search" class="form-control searchEdit searchInput " placeholder="Recherche&hellip;">
+               </div>
+           </div>
+           {{-- fin search --}}
             <div class="table-responsive">
               <table class="table tablesorter " id="">
                 <thead class=" text-primary">
@@ -32,7 +39,7 @@
 
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
                   @foreach ( $brief as $value)
 
                   <tr>
@@ -80,5 +87,6 @@
 
   </div>
   </div>
+  <script src="{{asset('assets/js/searchBrief.js')}}"></script>
 
   @endsection

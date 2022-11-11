@@ -13,6 +13,7 @@
               <a href="{{route('assigner.addAll',['id' => $id])}}"class="btn btn-info">All</a>
             </div>
             <div class="card-body">
+
               <div class="table-responsive table-upgrade">
                   <table class="table">
                       <thead>

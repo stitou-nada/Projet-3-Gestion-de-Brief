@@ -44,6 +44,14 @@
                 <button  type="submit" class="btn btn-primary">Add Apprenant</button>
                 <input type="hidden" value="{{$promotion->id}}" name="promotion_id">
               </form>
+              <div class="col">
+                {{-- search  --}}
+                <div class="search-box">
+                    <input type="hidden" value="" id="IdKey"   class="form-control  searchInput" >
+                    <input type="text" id="search" class="form-control searchEdit searchInput " placeholder="Recherche&hellip;">
+                  </div>
+              </div>
+              {{-- fin search --}}
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -57,7 +65,7 @@
                         <th class="text-center" > Action</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody">
                       @foreach ($apprenant as $value)
                       <tr>
                         <td>{{$value->id}}</td>
@@ -92,6 +100,7 @@
   </div>
   </div>
 
+  <script src="{{asset('assets/js/searchApp.js')}}"></script>
   <script>
     let text = document.querySelector('.title');
     let input = document.querySelector('.input');

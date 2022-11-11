@@ -14,6 +14,13 @@
               <a  href="{{route('promotion.create')}}" class="btn btn-primary">Ajouter Promotion</a>
             </div>
             <div class="card-body">
+                {{-- search  --}}
+                <div class="search-box-promotion">
+                   <input type="hidden" value="" id="IdKey"   class="form-control  searchInput" >
+                   <input type="text" id="search" class="form-control searchEdit searchInput " placeholder="Recherche&hellip;">
+                 </div>
+             </div>
+             {{-- fin search --}}
               <div class="table-responsive">
                 <table class="table tablesorter " id="">
                   <thead class=" text-primary">
@@ -31,7 +38,7 @@
 
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tbody">
                     @foreach ($promotion as $value)
                     <tr>
                       <td>
@@ -64,5 +71,6 @@
     <!-- fin table -->
   </div>
 </div>
+<script src="{{asset('assets/js/search.js')}}"></script>
 
 @endsection
