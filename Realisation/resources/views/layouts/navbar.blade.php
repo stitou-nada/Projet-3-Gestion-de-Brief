@@ -4,7 +4,7 @@
   -->
     <div class="sidebar-wrapper">
       <div class="logo">
-       
+
           <img  src="{{asset('assets/img/logo.png')}}" alt="">
 
       </div>
@@ -12,13 +12,13 @@
         <li class="active ">
           <a href="{{route('promotion.index')}}">
             <i class="tim-icons icon-chart-pie-36"></i>
-            <p>Gestion Promotion</p>
+            <p style="font-size: 14px";>Gestion Promotion</p>
           </a>
         </li>
         <li class="active ">
           <a href="{{route('brief.index')}}">
             <i class="tim-icons icon-chart-pie-36"></i>
-            <p>Gestion Brief</p>
+            <p style="font-size: 14px">Gestion Brief</p>
           </a>
         </li>
       </ul>
