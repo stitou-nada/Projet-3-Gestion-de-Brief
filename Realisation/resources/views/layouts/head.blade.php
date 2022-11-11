@@ -15,6 +15,7 @@
     <link href="{{asset('assets/css/black-dashboard.css')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/main.css')}}" rel="stylesheet" />
   </head>
 
   <!--   Core JS Files   -->

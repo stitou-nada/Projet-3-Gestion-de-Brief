@@ -1,7 +1,7 @@
  @extends('master')
   @section('content')
 
-  <div class="main-panel">  
+  <div class="main-panel">
   <div class="content">
     <div class="row">
       <div class="col-md-8">
@@ -19,10 +19,10 @@
                     <input type="text" class="form-control"  placeholder="nom"name="nom">
                   </div>
                 </div>
-              </div>                                                                                                                           
+              </div>
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-fill btn-primary">Save</button>
+              <button type="submit" class="btn btn-fill btn-primary">Add</button>
             </div>
           </form>
         </div>

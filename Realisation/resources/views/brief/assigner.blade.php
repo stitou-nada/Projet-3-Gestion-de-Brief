@@ -1,9 +1,9 @@
 
 @extends('master')
 @section('content')
-    
+
 <div class="main-panel">
-      
+
     <div class="content">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
@@ -18,7 +18,8 @@
                       <thead>
                       @foreach ($students as $value)
                       @if (!in_array($value->id, $assigned))
-                    <th>{{$value->Nom}}</th>
+                      <tr>
+                    <th>{{$value->Nom}} {{$value->Prenom}}</th>
                     <form action="{{route("assigner.store")}}" method="POST"style="padding-right: 1091px;">
                         @csrf
                     <input type="hidden" value="{{$value->id}}" name="apprenant_id">
@@ -27,27 +28,28 @@
                     <th > <button type="submit" class="btn btn-primary">+</button> </th>
                 </form>
                 @else
-                <th style="color: rgb(255, 0, 183)">{{$value->Nom}}</th>
+                <th style="color: rgb(255, 0, 0)">{{$value->Nom}} {{$value->Prenom}}</th>
                 <form action="{{route('assigner.destroy',$value->id)}}" method="POST" style="padding-right: 1091px;">
                     @csrf
                     @method('DELETE')
                   <input type="hidden" value="{{$value->id}}" name="apprenant_id">
                   <input type="hidden" value="{{$id}}" name="brief_id">
-            
+
                     <th><button type="submit" class="btn btn-danger">-</button></th>
+                </tr>
                 </form>
                 @endif
-                
+
                 @endforeach
             </thead>
-            
+
         </table>
     </div>
 </div>
-          </div>
+</div>
+<a href="{{route('brief.index')}}" class="btn btn-secondary">Retourn</a>
         </div>
       </div>
-      <a href="{{route('brief.index')}}" class="btn btn-success">Retourn</a>
     </div>
   </div>
 

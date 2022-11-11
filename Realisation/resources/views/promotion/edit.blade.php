@@ -1,6 +1,6 @@
  @extends('master')
   @section('content')
-  
+
   <div class="main-panel">
   <div class="content">
     {{-- <div class="row">
@@ -13,17 +13,17 @@
             <form  action="{{route('promotion.update',$promotion->id)}}" method="POST"  >
               @csrf
               @method("PUT")
-              <div class="row">
+                 <div class="row">
                 <div class="col-md-5 pr-md-1">
                   <div class="form-group">
                     <label>Nom Promotion</label>
                     <input type="text" class="form-control" placeholder="nom " value="{{$promotion->nom}}" name="nom" >
                   </div>
                 </div>
-                
-                
+
+
               </div>
-              
+
             </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-fill btn-primary">Editer</button>
@@ -33,15 +33,12 @@
 
 
 
-            @foreach ($brief as $valueBrief)
-            <h2>{{$valueBrief->Nom_du_brief}}</h2>
-            @endforeach
-
-
-
           {{-- gestion apprenant --}}
-             <div class="card ">
+          <div class="card ">
               <div class="card-header">
+                  @foreach ($brief as $valueBrief)
+                  <h2  >Briefs assignés à la promotion : {{$valueBrief->Nom_du_brief}}</h2>
+                  @endforeach
                 <form action="{{route('apprenant.create')}}"  method="get" >
 
                 <button  type="submit" class="btn btn-primary">Add Apprenant</button>
@@ -57,7 +54,7 @@
                         <th>Nom </th>
                         <th> Prenom</th>
                         <th>Email</th>
-                        <th > Action</th>
+                        <th class="text-center" > Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -67,30 +64,31 @@
                         <td>{{$value->Nom}}</td>
                         <td>{{$value->Prenom}}</td>
                         <td> {{$value->Email}}</td>
-                        <td>
+                        <td class="td-btn" style="">
                           <form action="{{route('apprenant.destroy',$value->id)}}" method="POST">
                             @csrf
                             @method("DELETE")
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
                             <a href="{{route('apprenant.edit',$value->id)}}" class="btn btn-seccess">Edit</a>
-                           <button type="submit" class="btn btn-danger">Delete</button>  
                         </td>
-                          
+
                       </tr>
-                      
+
                       @endforeach
-              
+
                     </tbody>
                   </table>
                 </div>
-              </div> 
-            
-      <!-- fin table -->
-      
-    </div> 
-    <a href="{{route('promotion.index')}}"class="btn btn-seccess">retourn</a> 
+              </div>
 
-      
-   
+      <!-- fin table -->
+
+    </div>
+    <a href="{{route('promotion.index')}}"class="btn btn-seccess">retourn</a>
+
+
+
   </div>
   </div>
   @endsection

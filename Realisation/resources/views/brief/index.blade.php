@@ -1,6 +1,6 @@
  @extends('master')
   @section('content')
-  <div class="main-panel">   
+  <div class="main-panel">
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -28,12 +28,12 @@
                     <th class="text-center">
                       Action
                     </th>
-                   
+
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ( $brief as $value)
-                 
+
                   <tr>
                     <td>
                       {{$value->id}}
@@ -54,15 +54,21 @@
                       <a href="{{route('brief.edit',$value->id)}}"class="btn btn-seccess">Edit</a>
                        <button type="submit" class="btn btn-danger">Delete</button>
                        <a  href="{{route('assigner.show',$value->id)}}" class="btn btn-info">Assigner</a>
-                       
+                      </form>
                       </td>
                       <td>
 
-                        <a  href="{{route('tache.create')}}" class="btn btn-warning" > + Tache</a>
+
+                        <form action="{{route('tache.create')}}"  method="get" >
+
+                            <button  class="btn btn-warning">+ Tache</button>
+                            <input type="hidden" value="{{$value->id}}" name="brief_id">
+                          </form>
+
                       </td>
                   </tr>
-                  
-                  
+
+
                   @endforeach
                 </tbody>
               </table>
