@@ -91,28 +91,39 @@ class searchController extends Controller
       }
     }
 }
-    public function searchApp(Request $request){
+    public function searchApp(Request $request ,$id){
         if($request->ajax()){
-            // dd($request->ajax());
             $input = $request->key;
         $output="";
-        $Apprenant= apprenant::where('Nom','like',$input."%")
-
+        $Apprenant= apprenant::select('*','apprenant.id as apprenat_id')
+        ->where([
+          ["promotion_id", '=', $id],
+          ['apprenant.id', '=', $input],
+           ])
+           ->orWhere([
+            ["promotion_id", '=', $id],
+            ['Nom','like','%'.$input]
+            ])
+        ->orWhere([
+            ["promotion_id", '=', $id],
+            ['Last_name','like','%'.$input]
+            ])
+        ->orWhere([
+            ["promotion_id", '=', $id],
+            ['Prenom','like','%'.$input]
+            ])
+            ->join("promotion","apprenant.promotion_id","=","promotion.id")
         ->get();
+
         if($Apprenant)
         {
             foreach ($Apprenant as $value) {
-            $urlEdit = (url('edit/'.$value->id));
-            $urlDelete = (url('suprimer/'.$value->id));
         $output.='<tr>
 
         <td>'.$value->id.'</td>
         <td>'.$value->Nom.'</td>
         <td>'.$value->Prenom.'</td>
         <td>'.$value->Email.'</td>
-
-
-
         <td class="td-btn" style="">
                           <form action="'.route('apprenant.destroy',$value->id).'" method="POST">
                           <input type="hidden" name="_token" value="fjuTilA30n1ZZyHiADMJe6d3hCdEgdcuI4Gu80Xz">

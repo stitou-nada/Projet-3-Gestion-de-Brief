@@ -47,7 +47,7 @@
               <div class="col">
                 {{-- search  --}}
                 <div class="search-box">
-                    <input type="hidden" value="" id="IdKey"   class="form-control  searchInput" >
+                    <input type="hidden" value="{{$promotion->id}}" id="searchID"   class="form-control  searchInput" >
                     <input type="text" id="search" class="form-control searchEdit searchInput " placeholder="Recherche&hellip;">
                   </div>
               </div>
@@ -100,7 +100,7 @@
   </div>
   </div>
 
-  <script src="{{asset('assets/js/searchApp.js')}}"></script>
+  
   <script>
     let text = document.querySelector('.title');
     let input = document.querySelector('.input');
@@ -110,5 +110,22 @@
         input.setAttribute("type", "text");
 
     }
- </script>
+
+
+
+    
+ $('#search').on('keyup',function(){
+        $id= $("#searchID").val();
+
+    $value=$(this).val();
+    $.ajax({
+        type : 'get',
+        url : '{{URL::to('searchApp/'.$id)}}',
+        data:{'key':$value},
+        success:function(data){
+            $('#tbody').html(data);
+        }
+    });
+    })
+</script>
   @endsection
