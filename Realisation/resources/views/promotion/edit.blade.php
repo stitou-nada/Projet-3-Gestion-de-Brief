@@ -47,7 +47,7 @@
               <div class="col">
                 {{-- search  --}}
                 <div class="search-box">
-                    <input type="hidden" value="{{$promotion->id}}" id="searchID"   class="form-control  searchInput" >
+                  <input type="hidden" value="{{$promotion->id}} " id="searchID" class="form-control">
                     <input type="text" id="search" class="form-control searchEdit searchInput " placeholder="Recherche&hellip;">
                   </div>
               </div>
@@ -113,14 +113,13 @@
 
 
 
-    
- $('#search').on('keyup',function(){
-        $id= $("#searchID").val();
-
+    $id= $("#searchID").val();
+    console.log($id);
+    $('#search').on('keyup',function(){
     $value=$(this).val();
     $.ajax({
         type : 'get',
-        url : '{{URL::to('searchApp/'.$id)}}',
+        url : '{{URL::to('searchApp/')}}',
         data:{'key':$value},
         success:function(data){
             $('#tbody').html(data);

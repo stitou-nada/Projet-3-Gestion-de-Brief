@@ -63,7 +63,7 @@
             <div class="card-body">
                    {{-- search  --}}
                    <div class="search-box-promotion">
-                    <input type="hidden" value="" id="IdKey"   class="form-control  searchInput" >
+                    <input type="hidden" value="{{$brief->id}}" id="IdKey"   class="form-control  searchInput" >
                     <input type="text" id="search" class="form-control searchEdit searchInput " placeholder="Recherche&hellip;">
                   </div>
               </div>
@@ -145,5 +145,23 @@
         inputDate2.setAttribute("type", "datetime-local");
 
     }
+
+
+
+
+    $('#search').on('keyup',function(){
+      $IdKey= $('#IdKey').val(); 
+      $value=$(this).val();
+    $.ajax({
+        type : 'get',
+        url : 'searchTache',
+        // url : '{{URL::to('searchApp')}}',
+        data:{'key':$value
+              'id':$IdKey},
+        success:function(data){
+            $('#tbody').html(data);
+        }
+    });
+    })
  </script>
   @endsection

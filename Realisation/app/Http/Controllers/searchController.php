@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\promotion;
 use App\Models\brief;
 use App\Models\apprenant;
+use App\Models\tache;
 use Illuminate\Http\Request;
 
 class searchController extends Controller
@@ -95,8 +96,8 @@ class searchController extends Controller
         if($request->ajax()){
             $input = $request->key;
         $output="";
-        $Apprenant= apprenant::select('*','apprenant.id as apprenat_id')
-        ->where([
+        $Apprenant= apprenant::
+        where([
           ["promotion_id", '=', $id],
           ['apprenant.id', '=', $input],
            ])
@@ -132,6 +133,58 @@ class searchController extends Controller
                           </form>
                             <a href="'.route('apprenant.edit',$value->id).'" style="font-size:25px" ><i class="fa fa-edit"></i></a>
         </td>
+        </tr> ';
+    }
+      return Response($output);
+      }
+    }
+
+}
+    public function searchTache(Request $request){
+        if($request->ajax()){
+            $input =$request->key;
+            $id =$request->id;
+        $output="";
+        $Tache= tache::
+        where([
+          ["brief_id", '=', $id],
+          ['tache.id', '=', $input],
+           ])
+           ->orWhere([
+            ["brief_id", '=', $id],
+            ['Nom_de_la_tache','like','%'.$input]
+            ])
+        ->orWhere([
+            ["brief_id", '=', $id],
+            ['Debut_de_la_tache','like','%'.$input]
+            ])
+        ->orWhere([
+            ["brief_id", '=', $id],
+            ['Fin_de_la_tache','like','%'.$input]
+            ])
+        ->join("brief","tache.brief_id","=","brief.id")
+        ->get();
+
+        if($Tache)
+        {
+            foreach ($Tache as $value) {
+        $output.='<tr>
+
+        <td>'.$value->id.'</td>
+        <td>'.$value->Nom_de_la_tache.'</td>
+        <td>'.$value->Debut_de_la_tache.'</td>
+        <td>'.$value->Fin_de_la_tache.'</td>
+        <td style="width:20%"  >
+
+                          <form action="'.route('tache.destroy',$value->id).'" method="POST">
+                          <input type="hidden" name="_token" value="fjuTilA30n1ZZyHiADMJe6d3hCdEgdcuI4Gu80Xz">
+                          <input type="hidden" name="_method" value="DELETE">
+                            <a href="'.route('tache.edit',$value->id).'" style="font-size:25px" ><i class="fa fa-edit"></i></a>
+                            <button style=" all: unset; cursor: pointer; font-size:25px"><i class="fa fa-trash"></i></button>
+
+                          </form>
+
+                      </td>
         </tr> ';
     }
       return Response($output);

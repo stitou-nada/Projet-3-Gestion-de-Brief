@@ -39,6 +39,7 @@ Route::resource('/apprenant',ApprenantController::class);
 Route::get('search',[searchController::class,'search']);
 Route::get('searchBrief',[searchController::class,'searchBreif']);
 Route::get('searchApp/{id}',[searchController::class,'searchApp']);
+Route::get('searchTache',[searchController::class,'searchTache']);
 
 
 
