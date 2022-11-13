@@ -25,7 +25,9 @@ class searchController extends Controller
         $output.='<tr>
 
         <td>'.$value->id.'</td>
-        <td>'.$value->nom.'</td>
+        <td>
+          <a href="'.route('promotion.edit',$value->id).'"> '.$value->nom.' </a> 
+       </td>
 
         <td class="text-center">
                         <form action="'.route('promotion.destroy',$value->id).'" method="POST">
