@@ -114,13 +114,15 @@
 
 
     $id= $("#searchID").val();
-    console.log($id);
     $('#search').on('keyup',function(){
     $value=$(this).val();
     $.ajax({
         type : 'get',
-        url : '{{URL::to('searchApp/')}}',
-        data:{'key':$value},
+        url : 'searchApp',
+        // url : '{{URL::to('searchApp')}}',
+        data:{'key':$value
+              'id':$id
+            },
         success:function(data){
             $('#tbody').html(data);
         }
