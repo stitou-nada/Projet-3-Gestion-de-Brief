@@ -100,7 +100,7 @@
   </div>
   </div>
 
-  
+
   <script>
     let text = document.querySelector('.title');
     let input = document.querySelector('.input');
@@ -118,9 +118,9 @@
     $value=$(this).val();
     $.ajax({
         type : 'get',
-        url : 'searchApp',
-        // url : '{{URL::to('searchApp')}}',
-        data:{'key':$value
+        // url : 'searchApp',
+        url : '{{URL::to('searchApp')}}',
+        data:{'key':$value,
               'id':$id
             },
         success:function(data){

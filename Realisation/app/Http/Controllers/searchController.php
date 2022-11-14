@@ -27,7 +27,7 @@ class searchController extends Controller
 
         <td>'.$value->id.'</td>
         <td>
-          <a href="'.route('promotion.edit',$value->id).'"> '.$value->nom.' </a> 
+          <a href="'.route('promotion.edit',$value->id).'"> '.$value->nom.' </a>
        </td>
 
         <td class="text-center">
